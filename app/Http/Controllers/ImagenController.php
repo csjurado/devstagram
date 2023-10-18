@@ -12,7 +12,7 @@ class ImagenController extends Controller
 
        $imagen = $request ->file('file');
        $nombreImagen = Str::uuid().".".$imagen->extension(); 
-    // *El codigo de arriba lo que hace es generar que la imagen subida tenga un nombre unico para nuestro servidor 
+       // *El codigo de arriba lo que hace es generar que la imagen de subida tenga un nombre unico para nuestro servidor 
        $imagenServidor = Image::make($imagen);
 
        $imagenServidor->fit(1000,1000);
