@@ -23,7 +23,7 @@ class PostController extends Controller
         // dd($user->id);
         //dd($user);
         //! Asi se consigue las propiedades de un objeto en este caso primero se llama al Modelo 
-        $post = Post::query()->where('user_id', $user->id)->paginate(20);
+        $post = Post::query()->where('user_id', $user->id)->latest()->paginate(20);
         // $paginator = $post->paginator();
         
         return view('dashboard',[

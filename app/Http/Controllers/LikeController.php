@@ -16,6 +16,10 @@ class LikeController extends Controller
         ]);
 
         return back();
+        // return view('dashboard',[
+        //     'post'=>$post,
+        //     //'paginator'=>$paginator, //Estoy pasando la varaible $post sin s 
+        // ]);
     }
     public function destroy (Request $request, Post $post){
         $request->user()->likes()->where('post_id',$post->id)->delete();

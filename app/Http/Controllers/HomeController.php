@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    // Esta funciona menciona que si no esta autnticado te redirija a la pantalla principal 
+
+
     public function __invoke()
     {
 
@@ -16,7 +23,7 @@ class HomeController extends Controller
         $ids = auth()->user()->followings->pluck('id')->toArray();
         $user = auth()->user()->username;
         // dd($user);
-        $posts = Post::whereIn('user_id', $ids)->paginate(20);
+        $posts = Post::whereIn('user_id', $ids)->latest()->paginate(20);
         return view('home',[
             'posts'=>$posts,
             'user'=>$user,

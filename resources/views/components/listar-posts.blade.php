@@ -1,9 +1,5 @@
-@extends('layouts.app')
-@section('titulo')
-Pagina Principal
-@endsection
-@section('contenido')
-    {{-- @if ($posts->count())
+<div>
+    @if ($posts->count())
         <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @foreach ($posts as $post)
             <div>
@@ -13,16 +9,11 @@ Pagina Principal
             </div>
             @endforeach
         </div>
-        
-
         <div 
             class="my-10">
                 {{$post->links}}
         </div>
     @else
-        <p> No hay posts</p>
-    @endif --}}
-
-    <x-listar-posts :posts="$posts" :user="$user"/>
-
-@endsection
+        <p> No hay posts, para mostrar </p>
+    @endif
+</div>
