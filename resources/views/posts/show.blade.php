@@ -11,12 +11,6 @@
                 @auth
                     <livewire:like-post :post="$post" />
                 @endauth
-                <p class="font-bold"> 
-                        {{$post->likes->count()}}
-                    <span class="font-normal">
-                         Likes 
-                    </span>
-                </p>
             </div>
             <div class="p-3">
                 <p class="font-bold"> 

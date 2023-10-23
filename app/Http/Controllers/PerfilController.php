@@ -22,7 +22,7 @@ class PerfilController extends Controller
         $request->request->add(['username'=>Str::slug($request->username)]);
         // Esta funcion crea el slug del username del usuario ; 
         $this->validate($request,[
-            'username'=>['required','unique:users','min:5','max:20','not_in:twitter,editar-perfil'],
+            'username' => ['required', 'unique:users,username,'.auth()->user()->id, 'min:3', 'max:20', 'not_in:twitter,editar-perfil'],
             // 'username'=>['required','unique:users','min:5','max:20','not_in:twitter,editar-perfil','in:CLIENTE'],
             // si voy a utilizar mas de 3 validaciones es recomendable colocarlo en un arreglo 
         ]);
@@ -37,7 +37,7 @@ class PerfilController extends Controller
         }
         $usuario = User::find(auth()->user()->id);
         $usuario->username = $request->username;
-        $usuario->imagen = $imagennombreImagen ?? auth()->user()->imagen ?? null;
+        $usuario->imagen = $nombreImagen ?? auth()->user()->imagen ?? null;
         //? El codigo de arriba lo que haces es revisar, si hay una imagen la deja si no, la deja vacia
         $usuario->save();
 
